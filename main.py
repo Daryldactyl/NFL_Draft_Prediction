@@ -106,58 +106,6 @@ def make_pred(input_data, model):
 
     return pred_class, proba
 
-
-# def compare_position(position, height, weight, dash, vertical, bench, jump, cone, shuttle, sc):
-#     # Read the data
-#     df = pd.read_csv('data/drafted_player_averages_per_year.csv')
-#     position_df = df[df['Position'] == position]
-#     numeric_columns = ['Height_in_inches', 'Weight', '40yd', 'Vertical', 'Bench', 'Broad Jump', '3Cone', 'Shuttle']
-#
-#     # Create a dictionary with the user's stats
-#     user_stats = {
-#         'Height_in_inches': height,
-#         'Weight': weight,
-#         '40yd': dash,
-#         'Vertical': vertical,
-#         'Bench': bench,
-#         'Broad Jump': jump,
-#         '3Cone': cone,
-#         'Shuttle': shuttle
-#     }
-#
-#     # Calculate mean stats for each position
-#     position_stats_mean = position_df.groupby('Position')[numeric_columns].mean().reset_index()
-#
-#     # Define positions for bar chart
-#     positions = numeric_columns
-#
-#     # Create traces for user stats and player stats
-#     trace_user = go.Bar(
-#         x=positions,
-#         y=[user_stats.get(stat, 0) for stat in positions],  # Get user stats or 0 if not available
-#         name='User Stats',
-#         marker_color='rgba(50, 171, 96, 0.6)'
-#     )
-#
-#     trace_player = go.Bar(
-#         x=positions,
-#         y=position_stats_mean.iloc[0][numeric_columns],
-#         # Assuming position_stats_mean has only one row for the position
-#         name=f'Drafted {position} Stats',
-#         marker_color='rgba(96, 50, 171, 0.6)'
-#     )
-#
-#     # Create layout
-#     layout = go.Layout(
-#         title=f'Comparison with Average Drafted {position}',
-#         xaxis=dict(title='Statistic'),
-#         yaxis=dict(title='Value')
-#     )
-#
-#     # Create figure
-#     fig = go.Figure(data=[trace_user, trace_player], layout=layout)
-#
-#     return fig
 def scale_data(position, height, weight, dash, vertical, bench, jump, cone, shuttle):
     df = pd.read_csv('data/drafted_player_averages_per_year.csv')
     numeric_columns = ['Height_in_inches', 'Weight', '40yd', 'Vertical', 'Bench', 'Broad Jump', '3Cone', 'Shuttle']
